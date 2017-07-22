@@ -6,21 +6,25 @@ indent() {
 
 echo "-----> Install mecab-ipadic-NEologd"
 BUILD_DIR=$1
-VENDOR_DIR="vendor"
+CACHE_DIR=$2
 CLONE_URL="https://github.com/neologd/mecab-ipadic-neologd"
+INSTALL_DIR="$1/.linuxbrew/lib/mecab/dic/mecab-ipadic-neologd"
 
 echo "CLONE_URL = " $CLONE_URL | indent
 
-cd $BUILD_DIR
-mkdir -p $VENDOR_DIR
-cd $VENDOR_DIR
+cd $CACHE_DIR
 
 echo "Set PATH: /app/.linuxbrew/bin/" | indent
 PATH="$PATH:$BUILD_DIR/.linuxbrew/bin/"
 export PATH
 echo "PATH exported" | indent
 
-git clone --depth 1 $CLONE_URL | indent
-cd mecab-ipadic-neologd
+if [ ! -d mecab-ipadic-neologd ]; then
+  git clone --depth 1 $CLONE_URL -b master --single-branch
+else
+  git -C mecab-ipadic-neologd pull
+fi | indent
 
-bin/install-mecab-ipadic-neologd -y -n -u `whoami` $NEOLOGD_OPTS | indent
+mecab-ipadic-neologd/bin/install-mecab-ipadic-neologd -y -n -u `whoami` \
+  --prefix $INSTALL_DIR \
+  $NEOLOGD_OPTS | indent
