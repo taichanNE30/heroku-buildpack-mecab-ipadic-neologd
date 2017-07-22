@@ -23,4 +23,4 @@ echo "PATH exported" | indent
 git clone --depth 1 $CLONE_URL | indent
 cd mecab-ipadic-neologd
 
-yes yes | bin/install-mecab-ipadic-neologd -u `whoami` | indent
+bin/install-mecab-ipadic-neologd -y -n -u `whoami` $NEOLOGD_OPTS | indent
