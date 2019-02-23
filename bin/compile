@@ -8,14 +8,14 @@ echo "-----> Install mecab-ipadic-NEologd"
 BUILD_DIR=$1
 CACHE_DIR=$2
 CLONE_URL="https://github.com/neologd/mecab-ipadic-neologd"
-INSTALL_DIR="$1/.linuxbrew/lib/mecab/dic/mecab-ipadic-neologd"
+INSTALL_DIR="$1/vendor/mecab/dic/mecab-ipadic-neologd"
 
 echo "CLONE_URL = " $CLONE_URL | indent
 
 cd $CACHE_DIR
 
-echo "Set PATH: /app/.linuxbrew/bin/" | indent
-PATH="$PATH:$BUILD_DIR/.linuxbrew/bin/"
+echo "Set PATH: /app/vendor/bin/" | indent
+PATH="$PATH:$BUILD_DIR/vendor/bin/"
 export PATH
 echo "PATH exported" | indent
 
