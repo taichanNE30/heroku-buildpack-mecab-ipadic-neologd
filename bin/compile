@@ -14,8 +14,8 @@ echo "CLONE_URL = " $CLONE_URL | indent
 
 cd $CACHE_DIR
 
-echo "Set PATH: /app/vendor/bin/" | indent
-PATH="$PATH:$BUILD_DIR/vendor/bin/"
+echo "Set PATH: /app/vendor/mecab/bin/" | indent
+PATH="$PATH:$BUILD_DIR/vendor/mecab/bin/"
 export PATH
 echo "PATH exported" | indent
 
